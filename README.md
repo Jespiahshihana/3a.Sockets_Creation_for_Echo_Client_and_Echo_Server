@@ -23,17 +23,18 @@ while True:
 ```
 import socket
 s=socket.socket()
-s.connect(('localhost',8000))
+s.bind(('localhost',8000))
+s.listen(5)
+c,addr=s.accept()
 while True:
- msg=input("Client > ")
- s.send(msg.encode())
- print("Server > ",s.recv(1024).decode())
+ ClientMessage=c.recv(1024).decode()
+ c.send(ClientMessage.encode())
 ```
 ## OUPUT
 ## CLIENT
-![Screenshot 2024-10-16 131651](https://github.com/user-attachments/assets/6ce05a3d-d7bb-4ba8-a1da-21de0aa9bb9d)
-## SERVER
 ![Screenshot 2024-10-16 131703](https://github.com/user-attachments/assets/95005f8e-73c1-41e2-be17-8d1d2a6d2cfd)
+## SERVER
+![Screenshot 2024-10-16 131651](https://github.com/user-attachments/assets/6ce05a3d-d7bb-4ba8-a1da-21de0aa9bb9d)
 
 ## RESULT
 Thus, the python program for creating Echo Client and Echo Server using TCP Sockets Links 
